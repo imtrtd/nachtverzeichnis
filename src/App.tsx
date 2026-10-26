@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { accounts } from "./data/accounts.ts";
+import FileDeck from "./FileDeck.tsx";
 import { categories, categoryLabel, copy, pick } from "./i18n.ts";
 import type { Account, Category, Lang } from "./types.ts";
 
@@ -161,9 +162,15 @@ function App() {
       <a className="skip" href="#directory">
         {text.skip}
       </a>
+      <a className="skip skip-files" href="#files">
+        {text.skipFiles}
+      </a>
       <header className="mast">
         <div className="mast-top">
           <p className="kicker">{text.kicker}</p>
+          <a className="jump" href="#files">
+            {text.filesJump}
+          </a>
           <div className="lang" role="group" aria-label={text.langLabel}>
             <button
               type="button"
@@ -186,9 +193,10 @@ function App() {
           <span className="city-word">Nürnberg</span>
         </h1>
         <p className="lede">{text.lede}</p>
-        <svg className="river" viewBox="0 0 800 28" aria-hidden="true">
-          <path d="M0 18 C80 4 140 26 220 14 C300 2 360 24 460 12 C540 2 620 22 800 8" />
-        </svg>
+        <p className="ticker" aria-hidden="true">
+          <span>TECHNO · KINK · RAVE · NÜRNBERG · 18+ · FLOOR · </span>
+          <span>TECHNO · KINK · RAVE · NÜRNBERG · 18+ · FLOOR · </span>
+        </p>
       </header>
 
       {noticeOpen ? (
@@ -342,6 +350,7 @@ function App() {
           </ol>
         </main>
       </div>
+      <FileDeck lang={lang} />
       <footer>
         <p>{text.footer}</p>
       </footer>
